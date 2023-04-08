@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\BarangController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\api\v1\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::get('posts', )
 
+// api restfull
 Route::apiResource('/posts' , PostController::class );
 Route::apiResource('/barangs' , BarangController::class );
+
+// api v1
+Route::post('/v1/users/store', [UserController::class, 'store']);

@@ -28,4 +28,9 @@ Route::apiResource('/posts' , PostController::class );
 Route::apiResource('/barangs' , BarangController::class );
 
 // api v1
-Route::post('/v1/users/store', [UserController::class, 'store']);
+Route::controller(UserController::class)->group(function () {
+    Route::get('/v1/users', 'index');
+    Route::get('/v1/users/{user}', 'show');
+    Route::post('/v1/users', 'store');
+    Route::put('/v1/users/{user}', 'update');
+});
